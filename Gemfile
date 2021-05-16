@@ -1,3 +1,3 @@
-source 'https://rubygems.org'
-gem 'json'
 
+# XXX json already available in Redmine
+# gem 'json'

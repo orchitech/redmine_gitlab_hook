@@ -10,9 +10,9 @@ Redmine::Plugin.register :redmine_gitlab_hook do
   requires_redmine :version_or_higher => '3.0.0'
 
   settings :default => { 
-    :all_branches => 'yes', 
-    :prune => 'yes', 
-    :auto_create => 'yes', 
-    :fetch_updates => 'yes' 
+    'all_branches' => 'yes',
+    'prune' => 'yes',
+    'auto_create' => 'yes',
+    'fetch_updates' => 'yes'
   }, :partial => 'settings/gitlab_settings'
 end

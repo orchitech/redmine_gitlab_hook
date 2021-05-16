@@ -8,7 +8,6 @@ class GitlabHookController < SysController
   def index
     if request.post?
       repository = find_repository
-      p repository.inspect
       git_success = true
       if repository
         # Fetch the changes from GitLab
@@ -60,12 +59,14 @@ class GitlabHookController < SysController
 
 
   def git_command(prefix, command, repository)
-    "#{prefix} " + GIT_BIN + " --git-dir=\"#{repository.url}\" #{command}"
+    prefix_sp = ' ' if prefix && prefix.length > 0
+    "#{prefix}#{prefix_sp}" + GIT_BIN + " --git-dir=\"#{repository.url}\" #{command}"
   end
 
 
   def clone_repository(prefix, remote_url, local_url)
-    "#{prefix} " + GIT_BIN + " clone --mirror #{remote_url} #{local_url}"
+    prefix_sp = ' ' if prefix && prefix.length > 0
+    "#{prefix}#{prefix_sp}" + GIT_BIN + " clone --mirror #{remote_url} #{local_url}"
   end
 
 
