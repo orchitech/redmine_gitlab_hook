@@ -103,7 +103,8 @@ class GitlabHookController < SysController
   def get_repository_identifier
     repo_namespace = get_repository_namespace
     repo_name = get_repository_name || get_project_identifier
-    identifier = repo_namespace.present? ? "#{repo_namespace}_#{repo_name}" : repo_name
+    ns_encoded = repo_namespace.gsub('/', '__') if repo_namespace.present?
+    identifier = ns_encoded.present? ? "#{ns_encoded}__#{repo_name}" : repo_name
     return identifier
   end
 
